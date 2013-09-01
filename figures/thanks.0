@@ -1,0 +1,13 @@
+%!PS
+%%BoundingBox: -18 -10 18 -3 
+%%Creator: MetaPost
+%%CreationDate: 2009.06.06:1205
+%%Pages: 1
+%*Font: cmsl10 9.96265 9.96265 21:800000000000100081242
+%%EndProlog
+%%Page: 1 1
+ 0 0 1 setrgbcolor
+-17.8867 -9.9185 moveto
+(Thanks!) cmsl10 9.96265 fshow
+showpage
+%%EOF

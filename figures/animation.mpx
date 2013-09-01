@@ -1,0 +1,88 @@
+% Written by DVItoMP, Version 0.9 (MiKTeX 2.4)
+begingroup save _p,_r,_s,_n; picture _p; _p=nullpicture;
+string _n[];
+vardef _s(expr _t,_f,_m,_x,_y)=
+  addto _p also _t infont _f scaled _m shifted (_x,_y); enddef;
+_n0="gbksong45";
+_s("8",_n0,1.00000,0.0000,0.0000);
+_n1="gbksong43";
+_s(char220,_n1,1.00000,9.9626,0.0000);
+_n2="cmmi10";
+_s("X",_n2,1.00000,23.2462,0.0000);
+_n3="gbksong40";
+_s(char27,_n3,1.00000,35.6026,0.0000);
+_n4="gbksong37";
+_s(">",_n4,1.00000,45.5652,0.0000);
+_n5="gbksong46";
+_s(".",_n5,1.00000,55.5279,0.0000);
+setbounds _p to (0,-1.0461)--(65.4905,-1.0461)--
+ (65.4905,8.2092)--(0,8.2092)--cycle;
+_p endgroup
+mpxbreak
+begingroup save _p,_r,_s,_n; picture _p; _p=nullpicture;
+string _n[];
+vardef _s(expr _t,_f,_m,_x,_y)=
+  addto _p also _t infont _f scaled _m shifted (_x,_y); enddef;
+_n2="cmmi10";
+_s("X",_n2,1.00000,0.0000,0.0000);
+_n3="gbksong40";
+_s(char27,_n3,1.00000,12.3564,0.0000);
+_n6="gbksong59";
+_s("e",_n6,1.00000,22.3191,0.0000);
+_n5="gbksong46";
+_s("C",_n5,1.00000,32.2817,0.0000);
+_n7="gbksong56";
+_s("q",_n7,1.00000,42.2443,0.0000);
+_n8="cmr10";
+_s("(",_n8,1.00000,52.2070,0.0000);
+_n9="gbksong64";
+_s(char20,_n9,1.00000,56.0814,0.0000);
+_n10="gbksong62";
+_s(char141,_n10,1.00000,66.0440,0.0000);
+_s(")",_n8,1.00000,76.0066,0.0000);
+setbounds _p to (0,-2.4907)--(79.8810,-2.4907)--
+ (79.8810,8.1694)--(0,8.1694)--cycle;
+_p endgroup
+mpxbreak
+begingroup save _p,_r,_s,_n; picture _p; _p=nullpicture;
+string _n[];
+vardef _s(expr _t,_f,_m,_x,_y)=
+  addto _p also _t infont _f scaled _m shifted (_x,_y); enddef;
+_n2="cmmi10";
+_s("X",_n2,1.00000,0.0000,0.0000);
+_n3="gbksong40";
+_s(char27,_n3,1.00000,12.3564,0.0000);
+_n11="gbksong54";
+_s(char254,_n11,1.00000,22.3191,0.0000);
+_n6="gbksong59";
+_s("e",_n6,1.00000,32.2817,0.0000);
+_n5="gbksong46";
+_s("C",_n5,1.00000,42.2443,0.0000);
+_n7="gbksong56";
+_s("q",_n7,1.00000,52.2070,0.0000);
+_n9="gbksong64";
+_s(char131,_n9,1.00000,62.1696,0.0000);
+_n12="gbksong38";
+_s(char11,_n12,1.00000,72.1323,0.0000);
+_n8="cmr10";
+_s("(",_n8,1.00000,82.0949,0.0000);
+_n4="gbksong37";
+_s(">",_n4,1.00000,85.9693,0.0000);
+_s(".",_n5,1.00000,95.9319,0.0000);
+_n10="gbksong62";
+_s(char141,_n10,1.00000,105.8946,0.0000);
+_s(")",_n8,1.00000,115.8572,0.0000);
+setbounds _p to (0,-2.4907)--(119.7316,-2.4907)--
+ (119.7316,8.1694)--(0,8.1694)--cycle;
+_p endgroup
+mpxbreak
+begingroup save _p,_r,_s,_n; picture _p; _p=nullpicture;
+string _n[];
+vardef _s(expr _t,_f,_m,_x,_y)=
+  addto _p also _t infont _f scaled _m shifted (_x,_y); enddef;
+_n8="cmr10";
+_s("1",_n8,1.00000,231.1333,-1078.9540);
+setbounds _p to (0,-2.4907)--(119.7316,-2.4907)--
+ (119.7316,8.1694)--(0,8.1694)--cycle;
+_p endgroup
+mpxbreak
