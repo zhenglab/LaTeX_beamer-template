@@ -1,0 +1,381 @@
+\documentclass[12pt]{article}
+%%---------------------------------------------------------------------
+% packages
+% geometry
+\usepackage{geometry}
+% font
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}  %%如果没有它，会有一些 tex 特殊字符无法正常使用，比如连字符。
+\usepackage{xunicode,xltxtra}
+\usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK}  % \CJKnumber{12345}: 一万二千三百四十五
+\usepackage{CJKfntef}  %%实现对汉字加点、下划线等。
+\usepackage{pifont}  % \ding{}
+% math
+\usepackage{amsmath,amsfonts,amssymb}
+% color
+\usepackage{color}
+\usepackage{xcolor}
+\definecolor{EYE}{RGB}{199,237,204}
+\definecolor{FLY}{RGB}{128,0,128}
+\definecolor{ZHY}{RGB}{139,0,255}
+% graphics
+\usepackage[americaninductors,europeanresistors]{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,shadows,shapes,calc,mindmap,trees,backgrounds}  % placements=positioning
+\usepackage{graphicx}  % \includegraphics[]{}
+\usepackage{subfigure}  %%图形或表格并排排列
+% table
+\usepackage{colortbl,dcolumn}  %% 彩色表格
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{booktabs}
+% code
+\usepackage{fancyvrb}
+\usepackage{listings}
+% title
+\usepackage{titlesec}
+% head/foot
+\usepackage{fancyhdr}
+% ref
+\usepackage{hyperref}
+% pagecolor
+\usepackage[pagecolor={EYE}]{pagecolor}
+% tightly-packed lists
+\usepackage{mdwlist}
+\usepackage{verbatim}%comment命令的注释包
+\usepackage{styles/iplouccfg}
+\usepackage{styles/zhfontcfg}
+\usepackage{styles/iplouclistings}
+
+%%---------------------------------------------------------------------
+% settings
+% geometry
+\geometry{left=2cm,right=1cm,top=2cm,bottom=2cm}  %设置 上、左、下、右 页边距
+\linespread{1.5} %行间距
+% font
+\setCJKmainfont{Adobe Kaiti Std}
+%\setmainfont[BoldFont=Adobe Garamond Pro Bold]{Apple Garamond}  % 英文字体
+%\setmainfont[BoldFont=Adobe Garamond Pro Bold,SmallCapsFont=Apple Garamond,SmallCapsFeatures={Scale=0.7}]{Apple Garamond}  %%苹果字体没有SmallCaps
+\setCJKmonofont{Adobe Fangsong Std}
+% graphics
+\graphicspath{{figures/}}
+\tikzset{
+    % Define standard arrow tip
+    >=stealth',
+    % Define style for boxes
+    punkt/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           text width=6.5em,
+           minimum height=2em,
+           text centered},
+    % Define arrow style
+    pil/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,},
+    % Define style for FlyZhyBall
+    FlyZhyBall/.style={
+      circle,
+      minimum size=6mm,
+      inner sep=0.5pt,
+      ball color=red!50!blue,
+      text=white,},
+    % Define style for FlyZhyRectangle
+    FlyZhyRectangle/.style={
+      rectangle,
+      rounded corners,
+      minimum size=6mm,
+      ball color=red!50!blue,
+      text=white,},
+    % Define style for zhyfly
+    zhyfly/.style={
+      rectangle,
+      rounded corners,
+      minimum size=6mm,
+      ball color=red!25!blue,
+      text=white,},
+    % Define style for new rectangle
+    nrectangle/.style={
+      rectangle,
+      draw=#1!50,
+      fill=#1!20,
+      minimum size=5mm,
+      inner sep=0.1pt,}
+}
+\ctikzset{
+  bipoles/length=.8cm
+}
+% code
+\lstnewenvironment{VHDLcode}[1][]{%
+  \lstset{
+    basicstyle=\footnotesize\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+\lstnewenvironment{VHDLmiddle}[1][]{%
+  \lstset{
+    basicstyle=\scriptsize\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+\lstnewenvironment{VHDLsmall}[1][]{%
+  \lstset{
+    basicstyle=\tiny\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+% pdf
+\hypersetup{pdfauthor={Haiyong Zheng},%
+            pdftitle={Title},%
+            CJKbookmarks=true,%
+            bookmarksnumbered=true,%
+            bookmarksopen=false,%
+            plainpages=false,%
+            colorlinks=true,%
+            citecolor=green,%
+            filecolor=magenta,%
+            linkcolor=cyan,%red(default)
+            urlcolor=cyan}
+% section
+%http://tex.stackexchange.com/questions/34288/how-to-place-a-shaded-box-around-a-section-label-and-name
+\newcommand\titlebar{%
+\tikz[baseline,trim left=3.1cm,trim right=3cm] {
+    \fill [cyan!25] (2.5cm,-1ex) rectangle (\textwidth+3.1cm,2.5ex);
+    \node [
+        fill=cyan!60!white,
+        anchor= base east,
+        rounded rectangle,
+        minimum height=3.5ex] at (3cm,0) {
+        \textbf{\thesection.}
+    };
+}%
+}
+\titleformat{\section}{\Large\bf\color{blue}}{\titlebar}{0.1cm}{}
+% head/foot
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyhf{}
+%\lhead{\color{black!50!green}2014年秋季学期}
+\chead{\color{black!50!green}Ubuntu 14.04下安装TexLive2014并用XeTeX配置中文字体}
+%\rhead{\color{black!50!green}通信电子电路}
+\lfoot{\color{blue!50!green}常琳（整理）}
+%\cfoot{\color{blue!50!green}\href{http://vision.ouc.edu.cn/~zhenghaiyong}{CVBIOUC}}
+\rfoot{\color{blue!50!green}$\cdot$\ \thepage\ $\cdot$}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%%---------------------------------------------------------------------
+\begin{document}
+%%---------------------------------------------------------------------
+%%---------------------------------------------------------------------
+% \titlepage
+\title{\vspace{-2em}Ubuntu 14.04下安装TexLive2014并用XeTeX配置中文字体\vspace{-0.7em}}
+\author{常琳（整理）}
+\date{\vspace{-0.7em}2015年8月\vspace{-0.7em}}
+%%---------------------------------------------------------------------
+\maketitle\thispagestyle{fancy}
+%%---------------------------------------------------------------------
+\maketitle
+\tableofcontents 
+%----------------------------------------------------------------------
+
+\section{安装TexLive2014}
+
+\begin{enumerate}
+\item 下载TexLive2014镜像文件到/home/changlin
+\item 挂载镜像文件
+
+在终端输入
+
+sudo mount -o loop /home/changlin/software/texlive2014.iso /mnt
+
+\item 进行安装
+
+在终端输入
+
+\begin{lstlisting}
+cd /mnt
+sudo ./install-tl
+\end{lstlisting}
+
+安装后默认的安装目录是/usr/local，这里的一个习惯是把个人下载的应用安装到/opt下，以方便拷贝，如需要请参照文件夹中中文版readme在安装过程中进行设置。
+
+\begin{comment}
+\item 配置环境变量：
+  
+  \begin{enumerate}
+   \item 打开终端，输入：sudo vim ~/.profile 　
+
+         在最后添加以下代码：
+
+        PATH=/opt/texlive/2014/bin/x86\_64-linux:\$PATH; export PATH
+        MANPATH=/opt/texlive/2014/texmf-dist/doc/man:\$MANPATH; export MANPATH
+
+        INFOPATH=/opt/texlive/2014/texmf-dist/doc/info:\$INFOPATH; export INFOPATH
+
+   \item 然后sudo vim /etc/manpath.config
+　　 在\# set up PATH to MANPATH mapping下输入
+
+        MANPATH\_MAP /opt/texlive/2014/bin/x86\_64-linux （空格）/opt/texlive/2013/texmf-dist/doc/man
+  
+  \end{enumerate}
+
+\end{comment}
+\item 测试
+
+此时texlive就安装成功了，你可以在/home/tmp下新建一个1.tex的文档，比如
+
+\begin{latexcode}
+
+\documentclass{article}
+\begin{document}
+dffdrgdfgfdgfd
+\end{document}
+\end{latexcode}
+
+然后打开终端输入
+
+\begin{lstlisting}
+cd /home/tmp
+xelatex 1.tex
+\end{lstlisting}
+
+如果能生成一个PDF文件，里面的内容是dffdrgdfgfdgfd ，就说明安装成功了。
+
+\end{enumerate}
+
+\section{XeTeX中文配置}
+
+\begin{enumerate}
+
+\item 在所新建测试文档的目录中新建一个zhfontcfg.sty的文件，然后使用命令sudo mktexlsr更新一下，文件的内容如下，a,b可以二选一,目前我的电脑上用的是b里面的内容。
+\begin{enumerate}
+
+\item[a]版本
+\begin{latexcode}
+% xetex/xelatex 字体设定宏包
+\ProvidesPackage{zhfontcfg}
+\usepackage{fontspec,xunicode}
+\usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK}  
+\defaultfontfeatures{Mapping=tex-text}
+%如果没有它，会有一些 tex 特殊字符无法正常使用，比如连字符。
+%中文断行
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\setCJKmainfont[BoldFont={SimHei}, ItalicFont={楷体_GB2312}]{SimSun}
+\setCJKfamilyfont{song}{SimSun}
+\setCJKfamilyfont{hei}{SimHei}
+\setCJKfamilyfont{kai}{楷体_GB2312}
+%楷体
+\newcommand{\kai}{\CJKfamily{kai}} 
+\def\kaishu{\kai}
+%黑体
+\newcommand{\hei}{\CJKfamily{hei}} 
+\def\heiti{\hei}
+%宋体
+\newcommand{\song}{\CJKfamily{song}} 
+\def\songti{\song}
+\end{latexcode}
+
+将安装包里的simhei.ttf simsun.ttf 楷体\_GB2312.ttf文件复制到/usr/share/fonts/truetype下
+
+sudo cp -a simhei.ttf simsun.ttf 楷体\_GB2312.ttf /usr/share/fonts/truetype
+
+\item[b]版本
+\begin{latexcode}
+% xetex/xelatex 字体设定宏包
+
+\ProvidesPackage{zhfontcfg}
+
+\usepackage{fontspec,xunicode,xltxtra}  % for XeTeX
+\usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK}  
+
+\defaultfontfeatures{Mapping=tex-text} %如果没有它，会有一些 tex 特殊字符无法正常使用，比如连字符。
+
+% 中文断行
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+\setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
+
+\setCJKfamilyfont{song}{Adobe Song Std}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{kai}{Adobe Kaiti Std}
+
+%\setCJKmainfont[BoldFont={SimHei}, ItalicFont={楷体_GB2312}]{SimSun}
+
+%\setCJKfamilyfont{song}{SimSun}
+%\setCJKfamilyfont{hei}{SimHei}
+%\setCJKfamilyfont{kai}{楷体_GB2312} 
+
+%楷体
+\newcommand{\kai}{\CJKfamily{kai}} 
+\def\kaishu{\kai}
+%黑体
+\newcommand{\hei}{\CJKfamily{hei}} 
+\def\heiti{\hei}
+%宋体
+\newcommand{\song}{\CJKfamily{song}} 
+\def\songti{\song}
+\end{latexcode}
+将安装包里的Adobe-fonts-otf文件夹复制到/usr/share/fonts/truetype下
+
+sudo cp -a Adobe-fonts-otf /usr/share/fonts/truetype
+
+注意，Texlive2015版安装后并没有这个文件夹，我的解决方案是对2014版安装后的该文件夹进行如上操作，如有更优方案请更新。
+
+\end{enumerate}
+
+\item 察看电脑中所安装过的字体
+
+在终端输入
+
+fc-list :lang=zh-cn
+
+查看是否安装了步骤1所需的对应字体
+
+\item 测试
+
+新建一个名为2.tex的测试文档,文档内容为
+
+\begin{latexcode}
+
+\documentclass{article}
+\usepackage{zhfontcfg}
+\begin{document}
+中文
+\end{document}
+\end{latexcode}
+
+输入命令xelatex 2.tex，若生成一个内容为“中文”的PDF文档，则说明配置成功了, 如果不行，可以重启下电脑试试。（注意，你的.tex文档应该与zhfontcfg.sty文件同在一个文件夹）。
+
+\end{enumerate}
+
+\end{document}
